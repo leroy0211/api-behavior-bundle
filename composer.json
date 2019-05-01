@@ -1,0 +1,40 @@
+{
+  "name": "baxmusic/api-toolkit-bundle",
+  "type": "symfony-bundle",
+  "description": "A few tools to make development of API's quicker",
+  "keywords": [],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Leroy",
+      "email": "leroy.baeyens@bax-shop.nl",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "symfony/symfony": "^3.0"
+  },
+  "require-dev": {
+    "mockery/mockery": "^1.2",
+    "symfony/phpunit-bridge": "^4.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "BaxMusic\\Bundle\\ApiToolkit\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "BaxMusic\\Bundle\\ApiToolkit\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
