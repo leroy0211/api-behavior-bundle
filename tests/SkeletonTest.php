@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BaxMusic\Bundle\ApiToolkit\Tests;
 
+use BaxMusic\Bundle\ApiToolkit\Annotation\ModelResponse;
 use BaxMusic\Bundle\ApiToolkit\Listener\DtoControllerListener;
-use BaxMusic\Bundle\ApiToolkit\Model\DtoInterface;
+use BaxMusic\Bundle\ApiToolkit\Tests\Fixtures\Model;
+use Doctrine\Common\Annotations\Reader;
 use PHPUnit\Framework\TestCase;
-use Symfony\Bundle\SecurityBundle\Tests\Functional\app\AppKernel;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
@@ -26,28 +30,30 @@ class SkeletonTest extends TestCase
     {
         $serializer = new Serializer([
             new GetSetMethodNormalizer(),
-            new ObjectNormalizer()
+            new ObjectNormalizer(),
         ], [
-            new JsonEncoder()
+            new JsonEncoder(),
         ]);
 
-        $listener = new DtoControllerListener($serializer);
+        $reader = $this->createMock(Reader::class);
 
-        $eventMock = $this->getMockBuilder(GetResponseForControllerResultEvent::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $listener = new DtoControllerListener($reader, $serializer);
 
-        $eventMock
-            ->expects($this->once())
-            ->method('getControllerResult')
-            ->willReturn($this->createMock(DtoInterface::class));
+        $modelResponse = new ModelResponse();
+        $modelResponse->status = 201;
 
-        $eventMock
-            ->expects($this->once())
-            ->method('setResponse');
+        $request = new Request([], [], ['_model_response' => $modelResponse]);
+
+        $eventMock = \Mockery::mock(GetResponseForControllerResultEvent::class);
+        $eventMock->makePartial();
+        $eventMock->allows([
+            'getControllerResult' => new Model(),
+            'getRequest' => $request,
+        ]);
 
         $listener->onKernelView($eventMock);
 
-        $this->assertNull($eventMock->getResponse());
+        $this->assertSame(201, $eventMock->getResponse()->getStatusCode());
+        $this->assertSame('{"key":null}', $eventMock->getResponse()->getContent());
     }
 }

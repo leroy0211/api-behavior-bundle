@@ -1,7 +1,8 @@
 <?php
 
-namespace BaxMusic\Bundle\ApiToolkit\Listener;
+declare(strict_types=1);
 
+namespace BaxMusic\Bundle\ApiToolkit\Listener;
 
 use BaxMusic\Bundle\ApiToolkit\Annotation\ModelResponse;
 use Doctrine\Common\Annotations\Reader;
@@ -17,9 +18,6 @@ final class DtoControllerListener
 
     private $reader;
 
-    /**
-     * ModelSubscriber constructor.
-     */
     public function __construct(Reader $reader, SerializerInterface $serializer)
     {
         $this->reader = $reader;
@@ -32,7 +30,6 @@ final class DtoControllerListener
             return;
         }
 
-
         $controllers = $event->getController();
         if (!is_array($controllers)) {
             return;
@@ -41,7 +38,6 @@ final class DtoControllerListener
         $request = $event->getRequest();
 
         $this->handleAnnotation($controllers, $request);
-
     }
 
     private function handleAnnotation(iterable $controllers, Request $request): void
@@ -50,13 +46,11 @@ final class DtoControllerListener
 
         try {
             $controller = new \ReflectionClass($controller);
+            $this->handleMethodAnnotation($controller, $method, $request);
         } catch (\ReflectionException $e) {
             throw new \RuntimeException('Failed to read annotation!');
         }
-
-        $this->handleMethodAnnotation($controller, $method, $request);
     }
-
 
     private function handleMethodAnnotation(\ReflectionClass $controller, string $method, Request $request): void
     {
@@ -77,10 +71,6 @@ final class DtoControllerListener
 
         if (!$model instanceof ModelResponse) {
             return;
-        }
-
-        if ($model->wrapped) {
-            $data = ['data' => $data];
         }
 
         $data = $this->serializer->serialize($data, 'json');

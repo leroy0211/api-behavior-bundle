@@ -1,19 +1,17 @@
 <?php
 
-return Symfony\CS\Config\Config::create()
-    ->setUsingCache(true)
-    ->level(Symfony\CS\FixerInterface::SYMFONY_LEVEL)
-    ->fixers([
-        'concat_with_spaces',
-        'newline_after_open_tag',
-        'ordered_use',
-        'phpdoc_order',
-        'short_array_syntax',
-        '-empty_return',
-        '-concat_without_spaces',
-        '-phpdoc_inline_tag',
+$finder = PhpCsFixer\Finder::create()
+    ->in(['src', 'tests'])
+;
+
+return PhpCsFixer\Config::create()
+    ->setFinder($finder)
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        '@PHP70Migration' => true,
+        '@PHP70Migration:risky' => true,
+        'array_syntax' => ['syntax' => 'short'],
     ])
-    ->finder(
-        Symfony\CS\Finder\DefaultFinder::create()->in(['src', 'tests'])
-    )
 ;
