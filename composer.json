@@ -13,21 +13,18 @@
   ],
   "require": {
     "php": ">=7.2",
-    "symfony/symfony": "^3.0"
+    "symfony/symfony": "^3.0",
+    "sensio/framework-extra-bundle": "^5.3"
   },
   "require-dev": {
     "mockery/mockery": "^1.2",
     "symfony/phpunit-bridge": "^4.2"
   },
   "autoload": {
-    "psr-4": {
-      "BaxMusic\\Bundle\\ApiToolkit\\": "src/"
-    }
+    "psr-4": { "BaxMusic\\Bundle\\ApiToolkit\\": "" }
   },
   "autoload-dev": {
-    "psr-4": {
-      "BaxMusic\\Bundle\\ApiToolkit\\Tests\\": "tests/"
-    }
+    "psr-4": { "Tests\\Fixtures\\": "Tests/Fixtures" }
   },
   "scripts": {
     "test": "phpunit"
