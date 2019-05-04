@@ -13,8 +13,7 @@
   ],
   "require": {
     "php": ">=7.2",
-    "symfony/symfony": "^3.0",
-    "sensio/framework-extra-bundle": "^5.3"
+    "symfony/symfony": "^3.0"
   },
   "require-dev": {
     "mockery/mockery": "^1.2",

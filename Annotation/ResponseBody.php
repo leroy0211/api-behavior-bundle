@@ -6,26 +6,38 @@ namespace BaxMusic\Bundle\ApiToolkit\Annotation;
 
 /**
  * @Annotation
- * @Target({"METHOD"})
  */
 class ResponseBody extends ConfiguredAnnotation
 {
-    private $status = 200;
+    /**
+     * @var string[]
+     */
+    private $serializerGroups = [];
 
     /**
-     * @return int
+     * @param string|string[] $serializerGroups
      */
-    public function getStatus(): int
+    public function setSerializerGroups($serializerGroups): void
     {
-        return $this->status;
+        if (!\is_array($serializerGroups)) {
+            $serializerGroups = [$serializerGroups];
+        }
+        $this->serializerGroups = $serializerGroups;
     }
 
-    /**
-     * @param int $status
-     */
-    public function setStatus(int $status): void
+    public function getSerializerGroups(): array
     {
-        $this->status = $status;
+        return $this->serializerGroups;
+    }
+
+    public function getContext()
+    {
+        $context = [];
+        if (!empty($this->serializerGroups)) {
+            $context['groups'] = $this->serializerGroups;
+        }
+
+        return $context;
     }
 
     /**

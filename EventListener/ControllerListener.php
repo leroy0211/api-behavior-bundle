@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BaxMusic\Bundle\ApiToolkit\Listener;
+namespace BaxMusic\Bundle\ApiToolkit\EventListener;
 
+use BaxMusic\Bundle\ApiToolkit\Annotation\AnnotationInterface;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Persistence\Proxy;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
@@ -48,9 +49,9 @@ class ControllerListener implements EventSubscriberInterface
 
         $configurations = [];
         foreach (array_merge(array_keys($classConfigurations), array_keys($methodConfigurations)) as $key) {
-            if (!\array_key_exists($key, $classConfigurations)) {
+            if (!array_key_exists($key, $classConfigurations)) {
                 $configurations[$key] = $methodConfigurations[$key];
-            } elseif (!\array_key_exists($key, $methodConfigurations)) {
+            } elseif (!array_key_exists($key, $methodConfigurations)) {
                 $configurations[$key] = $classConfigurations[$key];
             } else {
                 if (\is_array($classConfigurations[$key])) {
@@ -75,7 +76,7 @@ class ControllerListener implements EventSubscriberInterface
     {
         $configurations = [];
         foreach ($annotations as $configuration) {
-            if ($configuration instanceof ConfigurationInterface) {
+            if ($configuration instanceof AnnotationInterface) {
                 if ($configuration->allowArray()) {
                     $configurations['_'.$configuration->getAliasName()][] = $configuration;
                 } elseif (!isset($configurations['_'.$configuration->getAliasName()])) {
