@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class ControllerListener implements EventSubscriberInterface
+final class ControllerListener implements EventSubscriberInterface
 {
     /**
      * @var Reader

@@ -7,7 +7,7 @@ namespace BaxMusic\Bundle\ApiToolkit\EventListener;
 use BaxMusic\Bundle\ApiToolkit\Annotation\ResponseStatus;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 
-class ResponseStatusListener
+final class ResponseStatusListener
 {
     public function onKernelResponse(FilterResponseEvent $event)
     {

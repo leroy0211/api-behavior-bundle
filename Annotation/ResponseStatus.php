@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @Annotation
  */
-class ResponseStatus extends ConfiguredAnnotation
+final class ResponseStatus extends ConfiguredAnnotation
 {
     /**
      * @var int

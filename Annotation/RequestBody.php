@@ -10,7 +10,7 @@ use Doctrine\Common\Annotations\Annotation\Target;
  * @Annotation
  * @Target({"METHOD"})
  */
-class RequestBody extends ConfiguredAnnotation
+final class RequestBody extends ConfiguredAnnotation
 {
     /** @var string */
     private $property;

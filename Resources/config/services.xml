@@ -5,6 +5,23 @@
         https://symfony.com/schema/dic/services/services-1.0.xsd">
 
   <services>
+    <service id="baxmusic_api_toolkit.controller.listener" class="BaxMusic\Bundle\ApiToolkit\EventListener\ControllerListener">
+      <tag name="kernel.event_subscriber" />
+      <argument type="service" id="annotation_reader" />
+    </service>
 
+    <service id="baxmusic_api_toolkit.responsebody.listener" class="BaxMusic\Bundle\ApiToolkit\EventListener\ResponseBodyListener">
+      <tag name="kernel.event_listener" event="kernel.view" />
+      <argument type="service" id="serializer" />
+    </service>
+
+    <service id="baxmusic_api_toolkit.responseStatus.listener" class="BaxMusic\Bundle\ApiToolkit\EventListener\ResponseStatusListener">
+      <tag name="kernel.event_listener" event="kernel.response" />
+    </service>
+
+    <service id="baxmusic_api_toolkit.requestBody.valueresolver" class="BaxMusic\Bundle\ApiToolkit\Request\ArgumentValueResolver\RequestBodyResolver">
+      <tag name="controller.argument_value_resolver" />
+      <argument type="service" id="serializer" />
+    </service>
   </services>
 </container>

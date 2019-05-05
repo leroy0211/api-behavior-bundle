@@ -7,7 +7,7 @@ namespace BaxMusic\Bundle\ApiToolkit\Annotation;
 /**
  * @Annotation
  */
-class ResponseBody extends ConfiguredAnnotation
+final class ResponseBody extends ConfiguredAnnotation
 {
     /** @var array */
     private $context = [];

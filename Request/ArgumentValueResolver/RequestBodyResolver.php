@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class RequestBodyResolver implements ArgumentValueResolverInterface
+final class RequestBodyResolver implements ArgumentValueResolverInterface
 {
     private $serializer;
 

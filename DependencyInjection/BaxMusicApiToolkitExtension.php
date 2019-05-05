@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class BaxMusicApiToolkitExtension extends Extension
+final class BaxMusicApiToolkitExtension extends Extension
 {
     /**
      * {@inheritdoc}
