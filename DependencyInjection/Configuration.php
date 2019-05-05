@@ -16,5 +16,7 @@ final class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('baxmusic_api_toolkit');
+
+        return $treeBuilder;
     }
 }
