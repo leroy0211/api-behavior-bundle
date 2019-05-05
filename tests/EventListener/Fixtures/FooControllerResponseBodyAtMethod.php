@@ -8,7 +8,7 @@ use BaxMusic\Bundle\ApiToolkit\Annotation\ResponseBody;
 
 class FooControllerResponseBodyAtMethod
 {
-    const METHOD_SERIALIZATION_GROUPS = [];
+    const METHOD_CONTEXT = [];
 
     /**
      * @ResponseBody

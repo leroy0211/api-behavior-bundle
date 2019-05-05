@@ -11,8 +11,8 @@ class FooModel
     /**
      * @Groups({"groupA"})
      */
-    private $foo = 'lorem';
-    private $bar = 'ipsum';
+    public $foo = 'lorem';
+    public $bar = 'ipsum';
 
     /**
      * @return string

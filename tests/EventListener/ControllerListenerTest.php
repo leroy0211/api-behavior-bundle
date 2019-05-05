@@ -38,7 +38,7 @@ class ControllerListenerTest extends TestCase
         $this->listener->onKernelController($this->event);
 
         $this->assertNotNull($this->getReadedCache());
-        $this->assertEquals(FooControllerResponseBodyAtMethod::METHOD_SERIALIZATION_GROUPS, $this->getReadedCache()->getSerializerGroups());
+        $this->assertEquals(FooControllerResponseBodyAtMethod::METHOD_CONTEXT, $this->getReadedCache()->getContext());
     }
 
     public function testCacheAnnotationAtClass()
@@ -48,7 +48,7 @@ class ControllerListenerTest extends TestCase
         $this->listener->onKernelController($this->event);
 
         $this->assertNotNull($this->getReadedCache());
-        $this->assertEquals(FooControllerResponseBodyAtClass::CLASS_SERIALIZATION_GROUPS, $this->getReadedCache()->getSerializerGroups());
+        $this->assertEquals(FooControllerResponseBodyAtClass::CLASS_CONTEXT, $this->getReadedCache()->getContext());
     }
 
     public function testCacheAnnotationAtClassAndMethod()
@@ -58,13 +58,13 @@ class ControllerListenerTest extends TestCase
         $this->listener->onKernelController($this->event);
 
         $this->assertNotNull($this->getReadedCache());
-        $this->assertEquals(FooControllerResponseBodyAtClassAndMethod::METHOD_SERIALIZATION_GROUPS, $this->getReadedCache()->getSerializerGroups());
+        $this->assertEquals(FooControllerResponseBodyAtClassAndMethod::METHOD_CONTEXT, $this->getReadedCache()->getContext());
 
         $this->event = $this->getFilterControllerEvent([$controller, 'bar2Action'], $this->request);
         $this->listener->onKernelController($this->event);
 
         $this->assertNotNull($this->getReadedCache());
-        $this->assertEquals(FooControllerResponseBodyAtClassAndMethod::CLASS_SERIALIZATION_GROUPS, $this->getReadedCache()->getSerializerGroups());
+        $this->assertEquals(FooControllerResponseBodyAtClassAndMethod::CLASS_CONTEXT, $this->getReadedCache()->getContext());
     }
 
     /**

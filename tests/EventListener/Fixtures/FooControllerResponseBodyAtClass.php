@@ -11,7 +11,7 @@ use BaxMusic\Bundle\ApiToolkit\Annotation\ResponseBody;
  */
 class FooControllerResponseBodyAtClass
 {
-    const CLASS_SERIALIZATION_GROUPS = [];
+    const CLASS_CONTEXT = [];
 
     public function barAction()
     {

@@ -11,11 +11,11 @@ use BaxMusic\Bundle\ApiToolkit\Annotation\ResponseBody;
  */
 class FooControllerResponseBodyAtClassAndMethod
 {
-    const CLASS_SERIALIZATION_GROUPS = [];
-    const METHOD_SERIALIZATION_GROUPS = ['foobar'];
+    const CLASS_CONTEXT = [];
+    const METHOD_CONTEXT = ['groups' => ['foobar']];
 
     /**
-     * @ResponseBody(serializerGroups={"foobar"})
+     * @ResponseBody(context={"groups"={"foobar"}})
      */
     public function barAction()
     {
