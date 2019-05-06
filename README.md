@@ -1,13 +1,9 @@
 Api Toolkit Bundle
 ============
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
-[![Quality Score][ico-code-quality]][link-code-quality]
+This bundle provides some easy tools to create API's. 
 
-Skeleton project for new Symfony bundles.
+It is loosely based on Spring Framework. 
 
 ## Installation
 
@@ -18,6 +14,13 @@ composer require baxmusic/api-toolkit-bundle
 ```
 
 Enable bundle:
+
+Symfony 4
+
+```php
+#bundles.php
+BaxMusic\Bundle\ApiToolkit\BaxMusicApiToolkitBundle::class => ['all' => true],
+```
 
 Symfony 3
 
