@@ -18,13 +18,9 @@ final class RequestBody extends ConfiguredAnnotation
     /** @var array */
     private $context = [];
 
-    public function __construct(array $values)
+    protected function getValueProperty(): ?string
     {
-        if (isset($values['value'])) {
-            $values['property'] = $values['value'];
-            unset($values['value']);
-        }
-        parent::__construct($values);
+        return 'property';
     }
 
     /**

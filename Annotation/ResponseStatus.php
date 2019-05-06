@@ -16,6 +16,11 @@ final class ResponseStatus extends ConfiguredAnnotation
      */
     private $status = Response::HTTP_OK;
 
+    protected function getValueProperty(): ?string
+    {
+        return 'status';
+    }
+
     public function getStatus(): int
     {
         return $this->status;
