@@ -11,4 +11,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class RequestMapping extends Route
 {
+    public function __construct(array $data)
+    {
+        parent::__construct($data);
+
+        if (!$this->getMethods()) {
+            $this->setMethods((array) $this->getMethod());
+        }
+    }
+
+    public function getMethod(): ?string
+    {
+        return null;
+    }
 }

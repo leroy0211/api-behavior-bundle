@@ -9,11 +9,9 @@ namespace BaxMusic\Bundle\ApiToolkit\Annotation;
  */
 final class DeleteMapping extends RequestMapping
 {
-    public function __construct(array $data)
+    public function getMethod(): ?string
     {
-        if (!\in_array($method = 'DELETE', $data['methods'] ?? [])) {
-            $data['methods'][] = $method;
-        }
-        parent::__construct($data);
+        return 'DELETE';
     }
+
 }
