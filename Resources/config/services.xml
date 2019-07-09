@@ -15,6 +15,11 @@
       <argument type="service" id="serializer" />
     </service>
 
+    <service id="baxmusic_api_toolkit.rest_controller.listener" class="BaxMusic\Bundle\ApiToolkit\EventListener\RestControllerListener">
+      <tag name="kernel.event_listener" event="kernel.view" priority="100" />
+      <argument type="service" id="serializer" />
+    </service>
+
     <service id="baxmusic_api_toolkit.responseStatus.listener" class="BaxMusic\Bundle\ApiToolkit\EventListener\ResponseStatusListener">
       <tag name="kernel.event_listener" event="kernel.response" />
     </service>

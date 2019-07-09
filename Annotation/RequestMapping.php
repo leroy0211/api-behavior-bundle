@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Annotation
  */
-class RequestMapping extends Route
+class RequestMapping extends Route implements AnnotationInterface
 {
     public function __construct(array $data)
     {
@@ -23,5 +23,21 @@ class RequestMapping extends Route
     public function getMethod(): ?string
     {
         return null;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function allowArray(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getAliasName(): string
+    {
+        return '_request_mapping';
     }
 }
