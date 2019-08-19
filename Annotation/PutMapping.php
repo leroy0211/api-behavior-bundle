@@ -13,5 +13,4 @@ final class PutMapping extends RequestMapping
     {
         return 'PUT';
     }
-
 }

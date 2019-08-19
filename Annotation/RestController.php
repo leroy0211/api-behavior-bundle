@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BaxMusic\Bundle\ApiToolkit\Annotation;
 
 /**
@@ -8,7 +10,7 @@ namespace BaxMusic\Bundle\ApiToolkit\Annotation;
 final class RestController extends ConfiguredAnnotation
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function allowArray(): bool
     {
@@ -16,7 +18,7 @@ final class RestController extends ConfiguredAnnotation
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getAliasName(): string
     {

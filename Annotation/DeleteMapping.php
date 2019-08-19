@@ -13,5 +13,4 @@ final class DeleteMapping extends RequestMapping
     {
         return 'DELETE';
     }
-
 }

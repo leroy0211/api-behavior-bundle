@@ -26,7 +26,7 @@ class RequestMapping extends Route implements AnnotationInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function allowArray(): bool
     {
@@ -34,7 +34,7 @@ class RequestMapping extends Route implements AnnotationInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getAliasName(): string
     {

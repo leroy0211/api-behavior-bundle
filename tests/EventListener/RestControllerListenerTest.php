@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BaxMusic\Bundle\ApiToolkit\Tests\EventListener;
 
 use BaxMusic\Bundle\ApiToolkit\Annotation\RequestMapping;
-use BaxMusic\Bundle\ApiToolkit\Annotation\ResponseBody;
 use BaxMusic\Bundle\ApiToolkit\Annotation\RestController;
 use BaxMusic\Bundle\ApiToolkit\EventListener\RestControllerListener;
 use Doctrine\Common\Annotations\AnnotationReader;
@@ -64,7 +65,7 @@ class RestControllerListenerTest extends TestCase
     private function createRequest(RestController $restController, bool $withRequestMapping = false)
     {
         $attributes = [
-            '_rest_controller' => $restController
+            '_rest_controller' => $restController,
         ];
 
         if ($withRequestMapping) {

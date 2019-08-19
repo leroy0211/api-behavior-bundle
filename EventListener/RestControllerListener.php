@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BaxMusic\Bundle\ApiToolkit\EventListener;
 
 use BaxMusic\Bundle\ApiToolkit\Annotation\RestController;
@@ -26,7 +28,7 @@ final class RestControllerListener
         }
 
         // Limit activation to methods annotated with RequestMapping
-        if (!$request->attributes->has('_request_mapping')){
+        if (!$request->attributes->has('_request_mapping')) {
             return;
         }
 
@@ -45,5 +47,4 @@ final class RestControllerListener
 
         $event->setResponse($response);
     }
-
 }

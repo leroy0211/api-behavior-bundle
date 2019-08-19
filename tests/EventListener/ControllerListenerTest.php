@@ -19,13 +19,13 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class ControllerListenerTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->listener = new ControllerListener(new AnnotationReader());
         $this->request = $this->createRequest();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->listener = null;
         $this->request = null;
@@ -67,23 +67,19 @@ class ControllerListenerTest extends TestCase
         $this->assertEquals(FooControllerResponseBodyAtClassAndMethod::CLASS_CONTEXT, $this->getReadedCache()->getContext());
     }
 
-    /**
-     * @expectedException \LogicException
-     * @expectedExceptionMessage Multiple "response_body" annotations are not allowed
-     */
     public function testMultipleAnnotationsOnClassThrowsExceptionUnlessConfigurationAllowsArray()
     {
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage('Multiple "response_body" annotations are not allowed');
         $controller = new FooControllerMultipleResponseBodyAtClass();
         $this->event = $this->getFilterControllerEvent([$controller, 'barAction'], $this->request);
         $this->listener->onKernelController($this->event);
     }
 
-    /**
-     * @expectedException \LogicException
-     * @expectedExceptionMessage Multiple "response_body" annotations are not allowed
-     */
     public function testMultipleAnnotationsOnMethodThrowsExceptionUnlessConfigurationAllowsArray()
     {
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage('Multiple "response_body" annotations are not allowed');
         $controller = new FooControllerMultipleResponseBodyAtMethod();
         $this->event = $this->getFilterControllerEvent([$controller, 'barAction'], $this->request);
         $this->listener->onKernelController($this->event);
