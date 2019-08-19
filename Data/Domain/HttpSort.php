@@ -40,7 +40,7 @@ class HttpSort
     {
         $sortQuery = $request->query->get($this->sortParam);
 
-        $sort = new Sort();
+        $sort = Sort::unsorted();
 
         if (null === $sortQuery) {
             return $sort;

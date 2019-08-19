@@ -18,7 +18,7 @@ class Sort implements \IteratorAggregate
      *
      * @param Direction[]|null $directions
      */
-    public function __construct(array $directions = null)
+    private function __construct(array $directions = null)
     {
         $this->directions = $directions;
     }
@@ -59,6 +59,11 @@ class Sort implements \IteratorAggregate
     public function descending(): self
     {
         return $this->withDirection(self::DESC);
+    }
+
+    public static function unsorted(): self
+    {
+        return new self([]);
     }
 
     private function withDirection(string $newDirection): self
