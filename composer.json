@@ -25,7 +25,8 @@
     "ext-json": "*",
     "mockery/mockery": "^1.2",
     "symfony/property-access": "^3.4|^4.2",
-    "symfony/phpunit-bridge": "^4.2"
+    "symfony/phpunit-bridge": "^4.2",
+    "doctrine/orm": "^2.6"
   },
   "autoload": {
     "psr-4": { "BaxMusic\\Bundle\\ApiToolkit\\": "" }
