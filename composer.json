@@ -35,7 +35,7 @@
     ]
   },
   "autoload-dev": {
-    "psr-4": { "Flexsounds\\Bundle\\ApiBehavior\\Tests\\Fixtures": "/Tests/Fixtures" }
+    "psr-4": { "Flexsounds\\Bundle\\ApiBehavior\\Tests\\Fixtures\\": "/Tests/Fixtures" }
   },
   "extra": {
     "branch-alias": {
