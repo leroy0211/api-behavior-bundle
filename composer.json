@@ -1,0 +1,45 @@
+{
+  "name": "flexsounds/api-behavior-bundle",
+  "type": "symfony-bundle",
+  "description": "A few tools to make development of API's quicker",
+  "keywords": [],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Leroy",
+      "email": "leroybaeyens@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.3",
+    "symfony/config": "^3.4|^4.2",
+    "symfony/serializer": "^3.4|^4.2",
+    "symfony/framework-bundle": "^3.4|^4.2",
+    "symfony/dependency-injection": "^3.4|^4.2",
+    "symfony/http-kernel": "^3.4|^4.2",
+    "doctrine/annotations": "^1.0",
+    "doctrine/persistence": "^1.0"
+  },
+  "require-dev": {
+    "ext-json": "*",
+    "mockery/mockery": "^1.2",
+    "symfony/property-access": "^3.4|^4.2",
+    "symfony/phpunit-bridge": "^3.4|^4.2",
+    "doctrine/orm": "^2.6"
+  },
+  "autoload": {
+    "psr-4": { "Flexsounds\\Bundle\\ApiBehavior\\": "" }
+  },
+  "autoload-dev": {
+    "psr-4": { "Tests\\Fixtures\\": "Tests/Fixtures" }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}

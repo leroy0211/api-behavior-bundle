@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+  <services>
+    <service id="flexsounds_api_behavior.controller.listener" class="Flexsounds\Bundle\ApiBehavior\EventListener\ControllerListener">
+      <tag name="kernel.event_subscriber" />
+      <argument type="service" id="annotation_reader" />
+    </service>
+
+    <service id="flexsounds_api_behavior.responsebody.listener" class="Flexsounds\Bundle\ApiBehavior\EventListener\ResponseBodyListener">
+      <tag name="kernel.event_listener" event="kernel.view" />
+      <argument type="service" id="serializer" />
+    </service>
+
+    <service id="flexsounds_api_behavior.rest_controller.listener" class="Flexsounds\Bundle\ApiBehavior\EventListener\RestControllerListener">
+      <tag name="kernel.event_listener" event="kernel.view" priority="100" />
+      <argument type="service" id="serializer" />
+    </service>
+
+    <service id="flexsounds_api_behavior.responseStatus.listener" class="Flexsounds\Bundle\ApiBehavior\EventListener\ResponseStatusListener">
+      <tag name="kernel.event_listener" event="kernel.response" />
+    </service>
+
+    <service id="flexsounds_api_behavior.requestBody.valueresolver" class="Flexsounds\Bundle\ApiBehavior\Request\ArgumentValueResolver\RequestBodyResolver">
+      <tag name="controller.argument_value_resolver" />
+      <argument type="service" id="serializer" />
+    </service>
+  </services>
+</container>
