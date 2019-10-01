@@ -6,8 +6,8 @@ namespace Flexsounds\Bundle\ApiBehavior\Tests\Request\ArgumentValueResolver;
 
 use Flexsounds\Bundle\ApiBehavior\Annotation\RequestBody;
 use Flexsounds\Bundle\ApiBehavior\Request\ArgumentValueResolver\RequestBodyResolver;
-use Flexsounds\Bundle\ApiBehavior\Tests\EventListener\Fixtures\FooModel;
 use Doctrine\Common\Annotations\AnnotationReader;
+use Flexsounds\Bundle\ApiBehavior\Tests\Fixtures\EventListener\FooModel;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;

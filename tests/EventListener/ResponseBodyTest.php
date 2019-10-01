@@ -6,8 +6,8 @@ namespace Flexsounds\Bundle\ApiBehavior\Tests\EventListener;
 
 use Flexsounds\Bundle\ApiBehavior\Annotation\ResponseBody;
 use Flexsounds\Bundle\ApiBehavior\EventListener\ResponseBodyListener;
-use Flexsounds\Bundle\ApiBehavior\Tests\EventListener\Fixtures\FooModel;
 use Doctrine\Common\Annotations\AnnotationReader;
+use Flexsounds\Bundle\ApiBehavior\Tests\Fixtures\EventListener\FooModel;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

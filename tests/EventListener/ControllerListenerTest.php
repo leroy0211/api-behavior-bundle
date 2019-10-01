@@ -6,12 +6,12 @@ namespace Flexsounds\Bundle\ApiBehavior\Tests\EventListener;
 
 use Flexsounds\Bundle\ApiBehavior\Annotation\ResponseBody;
 use Flexsounds\Bundle\ApiBehavior\EventListener\ControllerListener;
-use Flexsounds\Bundle\ApiBehavior\Tests\EventListener\Fixtures\FooControllerMultipleResponseBodyAtClass;
-use Flexsounds\Bundle\ApiBehavior\Tests\EventListener\Fixtures\FooControllerMultipleResponseBodyAtMethod;
-use Flexsounds\Bundle\ApiBehavior\Tests\EventListener\Fixtures\FooControllerResponseBodyAtClass;
-use Flexsounds\Bundle\ApiBehavior\Tests\EventListener\Fixtures\FooControllerResponseBodyAtClassAndMethod;
-use Flexsounds\Bundle\ApiBehavior\Tests\EventListener\Fixtures\FooControllerResponseBodyAtMethod;
 use Doctrine\Common\Annotations\AnnotationReader;
+use Flexsounds\Bundle\ApiBehavior\Tests\Fixtures\EventListener\FooControllerMultipleResponseBodyAtClass;
+use Flexsounds\Bundle\ApiBehavior\Tests\Fixtures\EventListener\FooControllerMultipleResponseBodyAtMethod;
+use Flexsounds\Bundle\ApiBehavior\Tests\Fixtures\EventListener\FooControllerResponseBodyAtClass;
+use Flexsounds\Bundle\ApiBehavior\Tests\Fixtures\EventListener\FooControllerResponseBodyAtClassAndMethod;
+use Flexsounds\Bundle\ApiBehavior\Tests\Fixtures\EventListener\FooControllerResponseBodyAtMethod;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
