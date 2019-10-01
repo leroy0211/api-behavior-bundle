@@ -29,13 +29,10 @@
     "doctrine/orm": "^2.6"
   },
   "autoload": {
-    "psr-4": { "Flexsounds\\Bundle\\ApiBehavior\\": "" }
-  },
-  "autoload-dev": {
-    "psr-4": { "Tests\\Fixtures\\": "Tests/Fixtures" }
-  },
-  "scripts": {
-    "test": "phpunit"
+    "psr-4": { "Flexsounds\\Bundle\\ApiBehavior\\": "" },
+    "exclude-from-classmap": [
+      "/Tests/"
+    ]
   },
   "extra": {
     "branch-alias": {
