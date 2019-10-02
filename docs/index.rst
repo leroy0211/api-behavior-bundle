@@ -6,9 +6,15 @@
 Welcome to Symfony API Behavior Bundle's documentation!
 =======================================================
 
+This bundle provides some additioal tools to the Symfony Framework for create API's.
+It is loosely based on Spring Boot (REST).
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
+   docs/installation
+   docs/annotations
 
 
 
