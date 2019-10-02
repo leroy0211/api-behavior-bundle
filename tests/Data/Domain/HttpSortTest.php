@@ -42,6 +42,16 @@ class HttpSortTest extends TestCase
         ], $sort->getIterator()->getArrayCopy());
     }
 
+    public function testUnsortedRequest()
+    {
+        $request = new Request();
+
+        $httpSort = new HttpSort();
+        $sort = $httpSort->byRequest($request);
+
+        $this->assertTrue($sort->isUnsorted());
+    }
+
     public function testCanOverrideParameters()
     {
         $request = new Request([
