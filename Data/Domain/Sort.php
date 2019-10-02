@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Flexsounds\Bundle\ApiBehavior\Data\Domain;
 
+use BadMethodCallException;
 use Symfony\Component\HttpFoundation\Request;
+use Webmozart\Assert\Assert;
 
 class Sort implements \IteratorAggregate
 {
@@ -26,20 +28,33 @@ class Sort implements \IteratorAggregate
     }
 
     /**
-     * @param string|string[] $properties
-     * @param string          $direction
+     * @param string[] $properties
      *
      * @return Sort
      */
-    public static function by($properties, string $direction = self::ASC): self
+    public static function by(string ...$properties): self
     {
-        if (\is_string($properties)) {
-            $properties = [$properties];
-        }
+        Assert::notNull($properties, 'Properties must not be null!');
+        Assert::minCount($properties, 1, 'At least one property must be given!');
 
-        return new self(array_map(function ($property) use ($direction) {
-            return new Direction($direction, $property);
+        return new self(array_map(function ($property){
+            return new Direction(self::DEFAULT_DIRECTION, $property);
         }, $properties));
+    }
+
+    public static function byDirection(string $direction, string ...$properties): self
+    {
+        return self::by(...$properties)->withDirection($direction);
+    }
+
+    public function isSorted(): bool
+    {
+        return !empty($this->directions);
+    }
+
+    public function isUnsorted(): bool
+    {
+        return !$this->isSorted();
     }
 
     public function and(self $sort): self
@@ -77,24 +92,15 @@ class Sort implements \IteratorAggregate
         return new self($directions);
     }
 
-    public static function byRequest(Request $request)
+    public function getOrderFor(string $property): ?string
     {
-        $sortQuery = $request->query->get('sort');
-
-        $sort = new self([]);
-
-        if (null === $sortQuery) {
-            return $sort;
+        foreach ($this->directions as $direction) {
+            if ($direction->getProperty() === $property) {
+                return $direction->getDirection();
+            }
         }
 
-        foreach (explode(',', $sortQuery) as $value) {
-            $value = trim($value);
-            $sort = $sort->and(
-                self::by([$value], $request->query->get(sprintf('%s_dir', $value), self::DEFAULT_DIRECTION))
-            );
-        }
-
-        return $sort;
+        return null;
     }
 
     /**

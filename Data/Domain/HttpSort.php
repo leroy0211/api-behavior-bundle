@@ -46,10 +46,13 @@ class HttpSort
             return $sort;
         }
 
-        foreach (explode(',', $sortQuery) as $sortItem) {
-            $sortItem = trim($sortItem);
+        foreach (explode(',', $sortQuery) as $value) {
+            $value = trim($value);
             $sort = $sort->and(
-                Sort::by([$sortItem], $request->query->get(sprintf($this->sortDirectionParam, $sortItem), Sort::DEFAULT_DIRECTION))
+                Sort::byDirection(
+                    $request->query->get(sprintf($this->sortDirectionParam, $value), Sort::DEFAULT_DIRECTION),
+                    trim($value)
+                )
             );
         }
 

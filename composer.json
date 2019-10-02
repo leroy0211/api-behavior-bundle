@@ -19,7 +19,8 @@
     "symfony/dependency-injection": "^3.4|^4.2",
     "symfony/http-kernel": "^3.4|^4.2",
     "doctrine/annotations": "^1.0",
-    "doctrine/persistence": "^1.0"
+    "doctrine/persistence": "^1.0",
+    "webmozart/assert": "^1.5"
   },
   "require-dev": {
     "ext-json": "*",
