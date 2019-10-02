@@ -38,6 +38,6 @@ class RequestMapping extends Route implements AnnotationInterface
      */
     public function getAliasName(): string
     {
-        return '_request_mapping';
+        return 'request_mapping';
     }
 }
